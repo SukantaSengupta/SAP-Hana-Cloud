@@ -1,0 +1,76 @@
+--Table creation in Datalake
+CALL SYSRDL#CG.REMOTE_EXECUTE ('
+BEGIN
+    CREATE TABLE ODI_STATS ( 
+    Player varchar(255),
+	RunsScored varchar(255),
+	RunsScoredNum varchar(255),
+	MinutesBatted varchar(255),
+	BattedFlag varchar(255),
+	NotOutFlag varchar(255),
+	BallsFaced varchar(255),
+	BoundaryFours varchar(255),
+	BoundarySixes varchar(255),
+	BattingStrikeRate varchar(255),
+	InningsNumber varchar(255),
+	Opposition varchar(255),
+	Ground varchar(255),
+	InningsDate varchar(255),
+	Country varchar(255),
+	Fiftys varchar(255),
+	Hundreds varchar(255),
+	RunsScoredBuckets varchar(255),
+	OversBowled varchar(255),
+	BowledFlag varchar(255),
+	MaidensBowled varchar(255),
+	RunsConceded varchar(255),
+	WicketsTaken varchar(255),
+	FourWickets varchar(255),
+	FiveWickets varchar(255),
+	TenWickets varchar(255),
+	WicketsTakenBuckets varchar(255),
+	EconomyRate varchar(255)
+	);
+END');
+
+--------------------------------------------Import data from S3 Storage to Datalake
+CALL SYSRDL#CG.REMOTE_EXECUTE (' Load Table ODI_STATS
+( 
+    Player,
+	RunsScored,
+	RunsScoredNum,
+	MinutesBatted,
+	BattedFlag,
+	NotOutFlag,
+	BallsFaced,
+	BoundaryFours,
+	BoundarySixes,
+	BattingStrikeRate,
+	InningsNumber,
+	Opposition,
+	Ground,
+	InningsDate,
+	Country,
+	Fiftys,
+	Hundreds,
+	RunsScoredBuckets,
+	OversBowled,
+	BowledFlag,
+	MaidensBowled,
+	RunsConceded,
+	WicketsTaken,
+	FourWickets,
+	FiveWickets,
+	TenWickets,
+	WicketsTakenBuckets,
+	EconomyRate
+	''\x0a''
+)
+USING FILE ''s3://hana2021/File2.txt''
+DELIMITED BY '',''
+ACCESS_KEY_ID ''AKIA3DKMSRSR7J6P3RPF''
+SECRET_ACCESS_KEY ''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''
+REGION ''eu-west-2''
+ESCAPES OFF
+QUOTES OFF
+');
