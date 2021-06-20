@@ -68,9 +68,9 @@ CALL SYSRDL#CG.REMOTE_EXECUTE (' Load Table ODI_STATS
 )
 USING FILE ''s3://hana2021/File2.txt''
 DELIMITED BY '',''
-ACCESS_KEY_ID ''AKIA3DKMSRSR7J6P3RPF''
-SECRET_ACCESS_KEY ''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''
-REGION ''eu-west-2''
+ACCESS_KEY_ID ''##############''
+SECRET_ACCESS_KEY ''3##############''
+REGION ''eu-#####-2''
 ESCAPES OFF
 QUOTES OFF
 ');
